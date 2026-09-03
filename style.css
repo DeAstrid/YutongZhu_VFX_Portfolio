@@ -1,11 +1,11 @@
-/* Lighter, Cool Blue-Grey Color Theme */
+/* Original Neutral Tone - Slightly Lighter Grey */
 :root {
-    --bg-color: #2b323d;       /* Lighter cool blue-grey background */
-    --card-bg: #363e4c;        /* Slightly lighter slate cards to stand out */
-    --accent-color: #00d2dc;   /* Bright cyan/teal accent for high contrast */
-    --text-primary: #f0f4f8;   /* Crisp off-white text */
-    --text-secondary: #c0c9d6; /* Readable light blue-grey for subtext */
-    --border-color: #434c5b;   /* Soft slate borders */
+    --bg-color: #22252a;       /* Lighter neutral grey background (no blue tint) */
+    --card-bg: #2d3137;        /* Slightly lighter card background for depth */
+    --accent-color: #00adb5;   /* Original teal accent */
+    --text-primary: #f0f0f0;   /* Clean white text */
+    --text-secondary: #b0b4bc; /* High-contrast light grey for descriptions */
+    --border-color: #3a3f47;   /* Subtle neutral grey borders */
 }
 
 * {
