@@ -1,11 +1,11 @@
-/* Dark Theme Styling for VFX Portfolio */
+/* Lighter, Cool Blue-Grey Color Theme */
 :root {
-    --bg-color: #0f1115;
-    --card-bg: #181b22;
-    --accent-color: #00adb5;
-    --text-primary: #e6e6e6;
-    --text-secondary: #9a9da8;
-    --border-color: #2a2e39;
+    --bg-color: #2b323d;       /* Lighter cool blue-grey background */
+    --card-bg: #363e4c;        /* Slightly lighter slate cards to stand out */
+    --accent-color: #00d2dc;   /* Bright cyan/teal accent for high contrast */
+    --text-primary: #f0f4f8;   /* Crisp off-white text */
+    --text-secondary: #c0c9d6; /* Readable light blue-grey for subtext */
+    --border-color: #434c5b;   /* Soft slate borders */
 }
 
 * {
