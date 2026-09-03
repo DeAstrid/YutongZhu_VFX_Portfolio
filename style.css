@@ -86,7 +86,7 @@ a {
 
     /* 1. The Background Image */
     /* *** UPDATE THIS PATH to your actual image file *** */
-    background-image: url('bg_v001.jpg'); 
+    background-image: url('images/bg_v001.jpg'); 
     background-size: cover; /* Keeps image covering the area, zooming if needed */
     background-position: center; /* Centers the image */
     background-attachment: fixed; /* Optional: adds a parallax scrolling effect */
