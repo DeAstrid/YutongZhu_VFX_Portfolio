@@ -376,46 +376,48 @@ a {
     color: var(--text-secondary);
 }
 
-/* --- FIXED COMPACT ARTWORK GALLERY --- */
+/* --- PINTEREST-STYLE MASONRY GALLERY --- */
 
 .compact-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* Forces 3 columns by default */
-    gap: 1rem;
-    max-width: 680px; /* Keeps thumbnails small (~200px each) on PC/Laptop */
+    /* Set column counts instead of a CSS Grid */
+    column-count: 2; /* 2 columns on mobile */
+    column-gap: 0.75rem;
+    max-width: 680px; /* Limits overall width on PC */
     margin: 0 auto;
     padding: 1rem;
 }
 
+/* 3 columns on Desktop/Laptop */
+@media screen and (min-width: 601px) {
+    .compact-grid {
+        column-count: 3;
+        column-gap: 1rem;
+    }
+}
+
 .gallery-item {
-    display: block;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
+    display: inline-block; /* Essential for CSS column flow */
+    width: 100%;
+    margin-bottom: 0.75rem; /* Vertical space between stacked images */
     border-radius: 6px;
     border: 1px solid var(--border-color);
     background-color: var(--card-bg);
+    overflow: hidden;
+    break-inside: avoid; /* Prevents an image from splitting across columns */
 }
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* Preserves the original aspect ratio */
+    display: block;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.06);
+    transform: scale(1.04);
     opacity: 0.9;
 }
 
-/* Mobile-only adjustment: drop to 2 columns on phones */
-@media screen and (max-width: 600px) {
-    .compact-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        max-width: 400px;
-        gap: 0.75rem;
-    }
-}
 /* Ensure lightbox is hidden by default */
 .lightbox {
     display: none; /* Keeps it hidden until JavaScript triggers it */
