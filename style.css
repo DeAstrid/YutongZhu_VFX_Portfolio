@@ -417,18 +417,65 @@ a {
     transform: scale(1.04);
     opacity: 0.9;
 }
-/* Ensure lightbox is hidden by default */
+/* --- ENHANCED LIGHTBOX --- */
+
 .lightbox {
-    display: none; /* Keeps it hidden until JavaScript triggers it */
+    display: none;
     position: fixed;
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(4px);
+    background-color: rgba(10, 10, 12, 0.93); /* Darker backdrop */
+    backdrop-filter: blur(8px); /* Soft focus on background content */
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    box-sizing: border-box;
+    padding: 40px 20px; /* Safe distance margins for top and bottom */
+}
+
+/* Fix vertical images cutting off */
+.lightbox img {
+    max-width: 90vw !important; /* Never goes wider than screen */
+    max-height: 80vh !important; /* Cap vertical image to prevent overflow cut-off */
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important; /* Keeps original proportions intact */
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9); /* Shadows to anchor the piece */
+    display: block;
+    margin: auto;
+}
+
+/* Giant "X" exit button - fixed on top-right */
+.lightbox-close {
+    position: absolute !important;
+    top: 25px !important;
+    right: 35px !important;
+    font-size: 4rem !important; /* Very large and easy to hit */
+    font-weight: 300 !important; /* Thin & modern */
+    color: #ffffff !important;
+    cursor: pointer !important;
+    z-index: 1010 !important; /* Explicitly overlay everything */
+    line-height: 0.8 !important; /* Center the crosshair vertical alignment */
+    transition: transform 0.2s ease, color 0.2s ease;
+    user-select: none;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); /* Easy read against bright art */
+}
+
+/* Pop when hover */
+.lightbox-close:hover {
+    color: var(--accent-color, #00adb5) !important;
+    transform: scale(1.15);
+}
+
+/* Adjust button positioning on small mobile displays */
+@media screen and (max-width: 600px) {
+    .lightbox-close {
+        top: 15px !important;
+        right: 20px !important;
+        font-size: 3.2rem !important;
+    }
 }
