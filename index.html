@@ -239,5 +239,20 @@
         <p class="copyright">&copy; 2026 Yutong Zhu. All rights reserved.</p>
     </footer>
 
+    <script>
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = this.getAttribute('href');
+            lightbox.style.display = 'flex';
+        });
+    });
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
 </body>
 </html>
