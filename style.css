@@ -376,32 +376,20 @@ a {
     color: var(--text-secondary);
 }
 
-/* --- UPDATED COMPACT ARTWORK GALLERY --- */
+/* --- FIXED COMPACT ARTWORK GALLERY --- */
 
 .compact-grid {
-    display: grid;
-    /* 1. Mobile First: exactly 2 columns, tightly spaced */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 0.75rem;
-    
-    /* 2. THE SECRET: limit the overall width so they never stretch too big */
-    max-width: 500px; 
-    margin: 0 auto; /* Centers the whole gallery block */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Forces 3 columns by default */
+    gap: 1rem;
+    max-width: 680px; /* Keeps thumbnails small (~200px each) on PC/Laptop */
+    margin: 0 auto;
     padding: 1rem;
-}
-
-/* 3. PC / Desktop: change to exactly 3 columns and scale slightly */
-@media (min-width: 768px) {
-    .compact-grid {
-        grid-template-columns: repeat(3, 1fr); /* Forces exactly 3 columns */
-        max-width: 680px; /* Limits gallery width, keeping each photo small (~200px) */
-        gap: 1rem; /* Marginally larger gaps for desktop */
-    }
 }
 
 .gallery-item {
     display: block;
-    aspect-ratio: 1 / 1; /* Keeps them perfectly square */
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 6px;
     border: 1px solid var(--border-color);
@@ -411,11 +399,20 @@ a {
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Crops the image preview into a neat thumbnail */
+    object-fit: cover;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .gallery-item:hover img {
     transform: scale(1.06);
     opacity: 0.9;
+}
+
+/* Mobile-only adjustment: drop to 2 columns on phones */
+@media screen and (max-width: 600px) {
+    .compact-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 400px;
+        gap: 0.75rem;
+    }
 }
