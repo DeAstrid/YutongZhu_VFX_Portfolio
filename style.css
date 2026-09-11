@@ -417,7 +417,6 @@ a {
     transform: scale(1.04);
     opacity: 0.9;
 }
-
 /* Ensure lightbox is hidden by default */
 .lightbox {
     display: none; /* Keeps it hidden until JavaScript triggers it */
