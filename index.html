@@ -32,12 +32,26 @@
         </div>
     </header>
 
-    <section id="reel" class="section">
-        <h2>Showreel</h2>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/Gct33YVfauw" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
+   <section id="showreel" class="section">
+    <h2 class="section-title">Showreels</h2>
+    
+    <!-- Reel Selector Tabs -->
+    <div class="reel-tabs">
+        <button class="tab-btn active" onclick="switchReel('fx', this)">FX & Generalist Reel (Primary)</button>
+        <button class="tab-btn" onclick="switchReel('general', this)">3D Modeling & Texturing</button>
+        <button class="tab-btn" onclick="switchReel('comp', this)">Compositing & Finishing</button>
+    </div>
+
+    <!-- Single Embed Frame -->
+    <div class="reel-container">
+        <iframe id="main-reel" 
+                src="https://www.youtube.com/embed/Gct33YVfauw" 
+                title="FX Showreel" 
+                frameborder="0" 
+                allowfullscreen>
+        </iframe>
+    </div>
+</section>
 
     <section id="projects" class="section">
         <h2>Project Breakdowns</h2>
@@ -258,6 +272,27 @@
 
     function closeLightbox() {
         document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
+
+    <script>
+    // Object mapping tabs to YouTube Embed URLs
+    const reels = {
+        'fx': 'https://www.youtube.com/embed/Gct33YVfauw',
+        'general': 'https://www.youtube.com/embed/-ths0ZoY_2M',
+        'comp': 'https://www.youtube.com/embed/YOUR_COMP_REEL_ID'
+    };
+
+    function switchReel(type, buttonElement) {
+        // Update Iframe Source
+        const iframe = document.getElementById('main-reel');
+        if (reels[type]) {
+            iframe.src = reels[type];
+        }
+
+        // Update Active Button Style
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        buttonElement.classList.add('active');
     }
 </script>
 </body>
