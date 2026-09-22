@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yutong Zhu | FX Artist</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- 仅针对 hero 里那个下拉按钮做的小修补（不改动你的 style.css） -->
+    <style>
+        /* <button> 默认样式需要清掉，才能和 .btn 的 <a> 长得一致 */
+        .hero-links .dropdown-toggle {
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: inherit;
+            cursor: pointer;
+        }
+        .hero-links .caret {
+            font-size: 0.75em;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .hero-links .dropdown:hover .caret {
+            transform: rotate(180deg);
+        }
+
+        /* 小屏幕：两个按钮竖排，菜单居中在按钮下方，避免超出屏幕 */
+        @media (max-width: 600px) {
+            .hero-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-links .dropdown-menu {
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: calc(100vw - 2rem);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,51 +52,57 @@
         </ul>
     </nav>
 
-   <header class="hero">
+    <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>VFX PORTFOLIO</h1>
             <h2>Yutong Zhu</h2>
-            <p>FX Artist & Technical Director specializing in procedural simulation, physical solver workflows, environment FX, and pipeline tools.</p>
-            
+            <p>FX Artist &amp; Technical Director specializing in procedural simulation, physical solver workflows, environment FX, and pipeline tools.</p>
+
             <div class="hero-links">
                 <a href="mailto:yutongzhufx@gmail.com" class="btn">Email Me</a>
-                
-                <!-- CV Dropdown Menu -->
-                <div class="dropdown-menu">
-                    <a href="YutongZhu-vfx-simulation-cv.pdf" download="YutongZhu_FX_Simulation_CV.pdf">FX Simulation CV (Primary)</a>
-                    <a href="yutongzhu-vfx-modeling-and-texturing-cv.pdf" download="YutongZhu_Modeling_CV.pdf">3D Modeling CV</a>
-                    <a href="yutongzhu-compositing-cv.pdf" download="YutongZhu_Compositing_CV.pdf">Compositing CV</a>
+
+                <!-- CV Dropdown Menu (与 CV 区块共用 .dropdown 样式，hover 展开) -->
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button"
+                            aria-haspopup="true" aria-expanded="false">
+                        Download CV <span class="caret">&#9662;</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="YutongZhu-vfx-simulation-cv.pdf" download="YutongZhu_FX_Simulation_CV.pdf">FX Simulation CV (Primary)</a>
+                        <a href="yutongzhu-vfx-modeling-and-texturing-cv.pdf" download="YutongZhu_Modeling_CV.pdf">3D Modeling CV</a>
+                        <a href="yutongzhu-compositing-cv.pdf" download="YutongZhu_Compositing_CV.pdf">Compositing CV</a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-   <section id="showreel" class="section">
-    <h2 class="section-title">Showreels</h2>
-    
-    <!-- Reel Selector Tabs -->
-    <div class="reel-tabs">
-        <button class="tab-btn active" onclick="switchReel('fx', this)">FX & Generalist Reel (Primary)</button>
-        <button class="tab-btn" onclick="switchReel('general', this)">3D Modeling & Texturing</button>
-        <button class="tab-btn" onclick="switchReel('comp', this)">Compositing & Finishing</button>
-    </div>
+    <section id="showreel" class="section">
+        <h2 class="section-title">Showreels</h2>
 
-    <!-- Single Embed Frame -->
-    <div class="reel-container">
-        <iframe id="main-reel" 
-                src="https://www.youtube.com/embed/Gct33YVfauw" 
-                title="FX Showreel" 
-                frameborder="0" 
-                allowfullscreen>
-        </iframe>
-    </div>
-</section>
+        <!-- Reel Selector Tabs -->
+        <div class="reel-tabs">
+            <button class="tab-btn active" onclick="switchReel('fx', this)">FX &amp; Generalist Reel (Primary)</button>
+            <button class="tab-btn" onclick="switchReel('general', this)">3D Modeling &amp; Texturing</button>
+            <button class="tab-btn" onclick="switchReel('comp', this)">Compositing &amp; Finishing</button>
+        </div>
+
+        <!-- Single Embed Frame -->
+        <div class="reel-container">
+            <iframe id="main-reel"
+                    src="https://www.youtube.com/embed/Gct33YVfauw"
+                    title="FX Showreel"
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </section>
 
     <section id="projects" class="section">
         <h2>Project Breakdowns</h2>
         <div class="project-grid">
-            
+
             <article class="project-card">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/U-AoObay8bo" frameborder="0" allowfullscreen></iframe>
@@ -76,11 +115,11 @@
                     <p>Practical lighting and CG lighting</p>
                     <p>Procedural animation</p>
                     <p>Zbrush model</p>
-                    <p>Soft body simulation: FEM & Vellum</p>
+                    <p>Soft body simulation: FEM &amp; Vellum</p>
                     <p>Fluid simulation: FLIP</p>
-                    <P>Substance Painter texture</P>
+                    <p>Substance Painter texture</p>
                     <p>Karma Solaris lookdev</p>
-                    <p>Karma lighting & rendering</p>
+                    <p>Karma lighting &amp; rendering</p>
                     <p>Nuke compositing</p>
                 </div>
             </article>
@@ -93,12 +132,12 @@
                     <h3>Procedural Tentacle Tool For Artist</h3>
                     <p class="tech-stack"><strong>Tools:</strong> Maya, Houdini</p>
                     <p>Responsible for:</p>
-                    <p>Assets modeling & texturing</p>
+                    <p>Assets modeling &amp; texturing</p>
                     <p>Procedual tool creation: HDA</p>
                 </div>
             </article>
 
-             <article class="project-card">
+            <article class="project-card">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/Y-As2ZvZ5FY" frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -112,19 +151,20 @@
                     <p>Soft body simulation: Vellum</p>
                     <p>Particle Simulation: POP</p>
                     <p>Karma Solaris lookdev</p>
-                    <p>Karma lighting & rendering</p>
+                    <p>Karma lighting &amp; rendering</p>
                     <p>Nuke compositing</p>
                 </div>
             </article>
+
             <article class="project-card">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/0XTOCtqP6Y4" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="project-info">
-                    <h3>Meteor Impact & Destruction</h3>
+                    <h3>Meteor Impact &amp; Destruction</h3>
                     <p class="tech-stack"><strong>Tools:</strong> Maya, Houdini, Nuke, Substance Painter</p>
                     <p>Responsible for:</p>
-                    <p>Assets modeling & texturing</p>
+                    <p>Assets modeling &amp; texturing</p>
                     <p>Explosion simulation: PYRO</p>
                     <p>Debris simulation: POP</p>
                     <p>Nuke compositing</p>
@@ -134,7 +174,7 @@
     </section>
 
     <section id="tools" class="section">
-        <h2>Pipeline & Technical Tools</h2>
+        <h2>Pipeline &amp; Technical Tools</h2>
         <div class="tools-grid">
             <div class="tool-card">
                 <h3>Custom HDA Suite</h3>
@@ -145,42 +185,42 @@
     </section>
 
     <!-- Compact Artwork Gallery Section -->
-<section id="art-gallery" class="section">
-    <h2 class="section-title">Sketches & Digital Art</h2>
+    <section id="art-gallery" class="section">
+        <h2 class="section-title">Sketches &amp; Digital Art</h2>
 
-    <div class="compact-grid">
-        <!-- Add as many images as you like -->
-        <a href="images/paint_01.jpg" class="gallery-item"><img src="images/paint_01.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_02.jpg" class="gallery-item"><img src="images/paint_02.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_03.jpg" class="gallery-item"><img src="images/paint_03.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_04.jpg" class="gallery-item"><img src="images/paint_04.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_05.jpg" class="gallery-item"><img src="images/paint_05.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_06.jpg" class="gallery-item"><img src="images/paint_06.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_07.jpg" class="gallery-item"><img src="images/paint_07.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/paint_08.jpg" class="gallery-item"><img src="images/paint_08.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/sketch_01.jpg" class="gallery-item"><img src="images/sketch_01.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/sketch_02.jpg" class="gallery-item"><img src="images/sketch_02.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/sketch_03.jpg" class="gallery-item"><img src="images/sketch_03.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/sketch_04.jpg" class="gallery-item"><img src="images/sketch_04.jpg" alt="Artwork" loading="lazy"></a>
-        <a href="images/sketch_05.jpg" class="gallery-item"><img src="images/sketch_05.jpg" alt="Artwork" loading="lazy"></a>
+        <div class="compact-grid">
+            <!-- Add as many images as you like -->
+            <a href="images/paint_01.jpg" class="gallery-item"><img src="images/paint_01.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_02.jpg" class="gallery-item"><img src="images/paint_02.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_03.jpg" class="gallery-item"><img src="images/paint_03.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_04.jpg" class="gallery-item"><img src="images/paint_04.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_05.jpg" class="gallery-item"><img src="images/paint_05.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_06.jpg" class="gallery-item"><img src="images/paint_06.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_07.jpg" class="gallery-item"><img src="images/paint_07.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/paint_08.jpg" class="gallery-item"><img src="images/paint_08.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/sketch_01.jpg" class="gallery-item"><img src="images/sketch_01.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/sketch_02.jpg" class="gallery-item"><img src="images/sketch_02.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/sketch_03.jpg" class="gallery-item"><img src="images/sketch_03.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/sketch_04.jpg" class="gallery-item"><img src="images/sketch_04.jpg" alt="Artwork" loading="lazy"></a>
+            <a href="images/sketch_05.jpg" class="gallery-item"><img src="images/sketch_05.jpg" alt="Artwork" loading="lazy"></a>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" alt="Enlarged Artwork">
     </div>
-</section>
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img" alt="Enlarged Artwork">
-</div>
-    
+
     <section id="cv" class="section">
         <div class="cv-header">
             <h2>Curriculum Vitae</h2>
-               <div class="dropdown">
+            <div class="dropdown">
                 <button class="btn btn-outline dropdown-toggle">Download CV &#9662;</button>
                 <div class="dropdown-menu dropdown-menu-right">
-                     <a href="YutongZhu-vfx-simulation-cv.pdf" download="YutongZhu_FX_Simulation_CV.pdf">FX Simulation CV (Primary)</a>
+                    <a href="YutongZhu-vfx-simulation-cv.pdf" download="YutongZhu_FX_Simulation_CV.pdf">FX Simulation CV (Primary)</a>
                     <a href="yutongzhu-vfx-modeling-and-texturing-cv.pdf" download="YutongZhu_Modeling_CV.pdf">3D Modeling CV</a>
                     <a href="yutongzhu-compositing-cv.pdf" download="YutongZhu_Compositing_CV.pdf">Compositing CV</a>
-                </div>
                 </div>
             </div>
         </div>
@@ -194,20 +234,24 @@
             <div class="cv-block">
                 <h3>Technical Skills</h3>
                 <ul class="skills-list">
-                    <li><strong>FX Simulation & Technical Direction</strong></li> 
-                        <p>Houdini, Pyro, Vellum, Flip, RBD, HDA Creation, KineFX & Apex Rigging, Procedural Animation, Solaris & Karma</li></p>
-                    <li><strong> Compositing & Integration</strong></li>
-                        <p>Nuke, CG Integration & Multi-Pass Compositing, Technical Grading & Color Science, Rotoscoping</li></p>
-                    <li><strong>3D Modeling & LookDev</strong></li>
-                        <p>Maya, Zbrush, Substance Painter, V-Ray, Arnold,Modeling & Rigging</li></p>
-                    <li><strong>Coding</strong></li>
-                        <p>VEX, C, Python, HTML/CSS</li></p>
+                    <li><strong>FX Simulation &amp; Technical Direction</strong>
+                        <p>Houdini, Pyro, Vellum, Flip, RBD, HDA Creation, KineFX &amp; Apex Rigging, Procedural Animation, Solaris &amp; Karma</p>
+                    </li>
+                    <li><strong>Compositing &amp; Integration</strong>
+                        <p>Nuke, CG Integration &amp; Multi-Pass Compositing, Technical Grading &amp; Color Science, Rotoscoping</p>
+                    </li>
+                    <li><strong>3D Modeling &amp; LookDev</strong>
+                        <p>Maya, Zbrush, Substance Painter, V-Ray, Arnold, Modeling &amp; Rigging</p>
+                    </li>
+                    <li><strong>Coding</strong>
+                        <p>VEX, C, Python, HTML/CSS</p>
+                    </li>
                 </ul>
             </div>
 
             <div class="cv-block">
                 <h3>Key Projects</h3>
-                
+
                 <div class="cv-item">
                     <h4>VFX Artist — <em>Procedural Tentacle System for Artists</em></h4>
                     <ul>
@@ -216,50 +260,49 @@
                 </div>
 
                 <div class="cv-item">
-                    <h4>FX Artist — <em>Meteor Impact & Destruction</em></h4>
+                    <h4>FX Artist — <em>Meteor Impact &amp; Destruction</em></h4>
                     <ul>
                         <li>An art-directed, physically accurate 3-meter radius meteor impact, utilizing Pyro and POP simulations to achieve specific narrative timing and environmental interaction.</li>
                     </ul>
-                </div>   
+                </div>
+
                 <div class="cv-item">
                     <h4>Generalist — <em>‘Brain-Squid’ Creature Integration</em></h4>
                     <ul>
                         <li>A full-pipeline project integrating a multi-solver creature simulation (Vellum, FEM, FLIP) into a self-shot live-action plate, covering the process from matchmoving to final compositing.</li>
                     </ul>
-                 </div>
+                </div>
             </div>
-            
-       
-        
+
             <div class="cv-block">
                 <h3>Education</h3>
                 <div class="cv-item">
                     <h4>Bachelor of Arts in Visual Effects</h4>
                     <span class="cv-date">Bournmouth University 2023-2026</span>
                 </div>
-                 <div class="cv-item">
-                    <h4>Bachelor of Science(Course Complete) in Computer Science</h4>
+                <div class="cv-item">
+                    <h4>Bachelor of Science (Course Complete) in Computer Science</h4>
                     <span class="cv-date">University of Chinese Academy of Science 2020-2023</span>
                 </div>
             </div>
 
-                        <!-- Professional References -->
+            <!-- Professional References -->
             <div class="cv-block">
                 <h3>Professional References</h3>
                 <div class="references-grid">
-                    
+
                     <!-- Reference 1 -->
                     <div class="reference-card">
                         <h4>Jeremy Hardin</h4>
                         <p class="ref-title">VFX Supervisor</p>
                         <p class="ref-contact">
-                            <strong>Email:</strong> <a href="mailto:reference.email@example.com">jeremy@dccvfx.com</a><br>
+                            <strong>Email:</strong> <a href="mailto:jeremy@dccvfx.com">jeremy@dccvfx.com</a><br>
                             <strong>Relationship:</strong> Direct Supervisor / Academic Mentor
                         </p>
                     </div>
 
                 </div>
-                
+
                 <!-- Privacy Note (Optional) -->
                 <p class="ref-note"><em>* Further contact details are available upon request.</em></p>
             </div>
@@ -291,7 +334,7 @@
     function closeLightbox() {
         document.getElementById('lightbox').style.display = 'none';
     }
-</script>
+    </script>
 
     <script>
     // Object mapping tabs to YouTube Embed URLs
@@ -312,6 +355,6 @@
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         buttonElement.classList.add('active');
     }
-</script>
+    </script>
 </body>
 </html>
